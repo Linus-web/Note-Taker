@@ -2,20 +2,20 @@
 
 ## before starting to develop:
 
-node, npm installed
-php installed
-laravel installed
-composer installed
-postgesql installed and setup
+node, npm installed  
+php installed  
+laravel installed  
+composer installed  
+postgesql installed and setup  
 
-cp .env.example .env
+cp .env.example .env  
 
-update .env with database login credentials
+update .env with database login credentials  
 
-run commands:
+run commands:  
 
-composer install
-npm install
-php artisan migrate:fresh --seed
-npm run dev
-php artisan serve
+composer install  
+npm install  
+php artisan migrate:fresh --seed  
+npm run dev  
+php artisan serve  
