@@ -8,11 +8,21 @@ laravel installed
 composer installed  
 postgesql installed and setup  
 
+-------------------------------------------
+
+### copy .env.example to .env (create .env file)  
+
 cp .env.example .env  
 
-update .env with database login credentials  
+-------------------------------------------
 
-run commands:  
+### add database information to .env file  
+
+update .env with database login credentials
+
+-------------------------------------------
+
+### run commands:  
 
 composer install  
 npm install  
