@@ -176,7 +176,10 @@ export default function AuthenticatedLayout({ header, children }) {
                 </header>
             )}
 
-            <main>{children}</main>
+            <main
+            className='px-96 mt-16'
+
+            >{children}</main>
         </div>
     );
 }

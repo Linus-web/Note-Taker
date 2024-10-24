@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,14 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/courses', [CourseController::class,'show'])->middleware(['auth', 'verified'])->name('courses');
+Route::get('/courses', [CourseController::class,'index'])->middleware(['auth', 'verified'])->name('courses');
+Route::get('/courses/{id}', [CourseController::class, 'show'] )->middleware(['auth', 'verified'])->name('course');
+
+
+Route::get('/notes/{note_id}', [NoteController::class, 'show'])->middleware(['auth'])->name('note.show');
+
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
