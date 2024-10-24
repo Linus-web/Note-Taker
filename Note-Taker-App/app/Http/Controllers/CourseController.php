@@ -22,15 +22,27 @@ class CourseController extends Controller
     }
 
 
-    public function show(string $id){
+    public function show(string $id)
+{
+    $course = Course::findOrFail($id);
 
-        $course = Course::findOrFail($id);
-        $notes = $course->notes()->with('user')->get();
+    $notes = $course->notes()
+        ->select('id', 'title', 'content', 'updated_at', 'user_id')
+        ->with('user:id,name')
+        ->orderBy('updated_at', 'desc')
+        ->get();
 
 
-        return Inertia::render('Course', ['course' => $course, 'notes' => $notes]);
+    $notes->makeHidden('user_id');
+    $notes->each(function ($note) {
+        $note->user->makeHidden('id');
+    });
 
-    }
+    return Inertia::render('Course', [
+        'course' => $course,
+        'notes' => $notes
+    ]);
+}
 
 
 

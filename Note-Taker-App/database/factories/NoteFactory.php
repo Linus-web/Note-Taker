@@ -20,9 +20,9 @@ class NoteFactory extends Factory
     {
             return [
                 'title' => $this->faker->sentence,
-                'is_public' => $this->faker->boolean,
                 'user_id' => User::factory(), // Create a new user if needed
                 'course_id' => Course::factory(), // Create a new course if needed
+                'content' => $this->faker->sentences(10, true)
             ];
     }
 }

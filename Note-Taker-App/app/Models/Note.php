@@ -9,7 +9,7 @@ class Note extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'is_public', 'user_id', 'course_id'];
+    protected $fillable = ['title', 'is_public', 'user_id', 'course_id', 'content'];
 
     // A note belongs to a user
     public function user()
@@ -23,9 +23,4 @@ class Note extends Model
         return $this->belongsTo(Course::class);
     }
 
-    // A note has many blocks
-    public function blocks()
-    {
-        return $this->hasMany(NoteBlock::class)->orderBy('order');
-    }
 }

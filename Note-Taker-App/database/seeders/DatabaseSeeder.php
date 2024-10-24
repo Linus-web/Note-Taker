@@ -10,7 +10,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(CourseSeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(NoteSeeder::class); // Optionally if you want to seed additional blocks
     }
 }
 

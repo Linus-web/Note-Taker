@@ -1,8 +1,9 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head, Link, useForm } from "@inertiajs/react";
+import { Head, Link, usePage} from "@inertiajs/react";
 
-export default function Course({ course, notes }) {
-    console.log(notes);
+export default function Course({ course, notes}) {
+    const { flash } = usePage().props
+    console.log(flash)
 
     return (
         <AuthenticatedLayout
@@ -14,6 +15,12 @@ export default function Course({ course, notes }) {
         >
             <Head title={course.name} />
 
+             {flash.message && (
+                <div className="bg-green-500 text-white p-4 rounded mb-4">
+                    {flash.message}
+                </div>
+            )}
+
             <div className="bg-white dark:bg-gray-800 dark:text-white text-gray-700 p-6 shadow-sm rounded-lg">
                 <p className=" mb-6">{course.description}</p>
             </div>
@@ -22,6 +29,18 @@ export default function Course({ course, notes }) {
                 <h3 className="text-xl font-semibold mb-4 dark:text-white">
                     Course notes
                 </h3>
+
+                <Link
+                href={route("note.create.view", {
+                    course: course.id
+                })}
+                >
+                <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    >
+                    Create Note
+                </button>
+                </Link>
 
                 <div className="space-y-4">
                     {notes.length > 0 ? (
@@ -35,7 +54,7 @@ export default function Course({ course, notes }) {
                                     <span className="text-sm text-gray-500">
                                         updated at:{" "}
                                         {new Date(
-                                            note.created_at
+                                            note.updated_at
                                         ).toLocaleString()}
                                     </span>
                                 </div>

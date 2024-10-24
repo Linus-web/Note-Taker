@@ -27,8 +27,8 @@ Route::get('/courses/{id}', [CourseController::class, 'show'] )->middleware(['au
 
 
 Route::get('/notes/{note_id}', [NoteController::class, 'show'])->middleware(['auth'])->name('note.show');
-
-
+Route::get('/notes/{course}/create', [NoteController::class, 'createNote'])->middleware(['auth'])->name('note.create.view');
+Route::post('/notes', [NoteController::class, 'store'])->middleware(['auth'])->name('note.store');
 
 
 Route::middleware('auth')->group(function () {

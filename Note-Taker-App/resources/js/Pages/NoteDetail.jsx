@@ -9,32 +9,23 @@ export default function NoteDetail({ note }) {
         <AuthenticatedLayout
             header={
                 <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-                    Note by {note.user.name}
+                    {note.title}
                 </h2>
             }
         >
-            <Head title={`Note by ${note.user.name}`} />
+            <Head title={`Note by ${note.title}`} />
 
             <div className="bg-white p-6 shadow-sm rounded-lg">
                 <p className="text-gray-700 mb-6">{note.title}</p>
             </div>
 
             <div className="mt-8">
-                <h4 className="text-xl font-semibold mb-4 dark:text-white">Blocks</h4>
-
-                {note.blocks.length > 0 ? (
-                    note.blocks.map((block, index) => (
+                <h4 className="text-xl font-semibold mb-4 dark:text-white">Note</h4>
                         <div
-                            key={index}
                             className="bg-gray-100 p-4 rounded-lg shadow-sm mb-4"
                         >
-                            <h5 className="font-bold">{block.title}</h5>
-                            <p className="text-gray-600">{block.content}</p>
+                            <p className="text-gray-600">{note.content}</p>
                         </div>
-                    ))
-                ) : (
-                    <p>No blocks for this note yet.</p>
-                )}
             </div>
         </AuthenticatedLayout>
     );
